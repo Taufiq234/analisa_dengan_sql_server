@@ -1,0 +1,41 @@
+-- Siapa top 10 shop name yang paling profit serta apa sub dan detail categories yang mereka jual ?
+select [Shop Name], [Sub categories],[Detail Categories], 
+sum(sold) as Total_penjualan, SUM(price*sold) as Profit from shopee
+where sold >= 1
+group by [Shop Name], [Sub categories],[Detail Categories]
+order by Profit desc
+
+-- Siapa top 10 Product Name yang paling profit serta apa sub dan detail kategori nya ?
+select top 10 [Product Name], [Sub categories],[Detail Categories], 
+sum(sold) as Total_penjualan, SUM(price*sold) as Profit from shopee
+where sold >= 1
+group by [Product Name], [Sub categories],[Detail Categories]
+order by Profit desc
+
+-- Apa sub kategori dan detail kategori dengan penjualan serta profit paling banyak
+select [Sub categories], [Detail Categories], sum(Sold) as Total_penjualan, 
+SUM(price*sold) as Profit from shopee
+where Sold >=1
+group by [Sub categories], [Detail Categories]
+order by Profit desc
+    
+-- Siapa shop name yang paling profit berdasarkan sub kategori 'Pakaian Anak Laki-laki'
+select [Shop Name], [Sub categories],[Detail Categories], 
+sum(sold) as Total_penjualan, SUM(price*sold) as Profit from shopee
+where sold >= 1 and [Sub Categories]='Pakaian Anak Laki-laki'
+group by [Shop Name], [Sub categories],[Detail Categories]
+order by Profit desc
+
+-- Siapa shop name yang paling profit berdasarkan sub kategori 'Pakaian Anak Perempuan'
+select [Shop Name], [Sub categories],[Detail Categories], 
+sum(sold) as Total_penjualan, SUM(price*sold) as Profit from shopee
+where sold >= 1 and [Sub Categories]='Pakaian Anak Perempuan'
+group by [Shop Name], [Sub categories],[Detail Categories]
+order by Profit desc
+
+-- Siapa shop name yang paling profit berdasarkan sub kategori 'Pakaian Bayi'
+select [Shop Name], [Sub categories],[Detail Categories], 
+sum(sold) as Total_penjualan, SUM(price*sold) as Profit from shopee
+where sold >= 1 and [Sub Categories]='Pakaian Bayi'
+group by [Shop Name], [Sub categories],[Detail Categories]
+order by Profit desc
